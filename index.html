@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Metadados da página -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Laudo Médico - Orientações para Pacientes Alérgicos a AINEs">
+    <title>Laudo Médico - Angioedema</title>
+    
+    <!-- Estilos CSS incorporados -->
+    <style>
+        /* Reset e estilos globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Configuração da familia de fontes e cores base */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        /* Container principal - centralizado e com largura máxima */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        /* Cabeçalho com cores suaves */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 4px solid #764ba2;
+        }
+
+        /* Estilo do título principal */
+        .header h1 {
+            font-size: clamp(1.2rem, 5vw, 2rem);
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* Seção de dados do paciente */
+        .patient-info {
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 20px;
+            border-left: 5px solid #667eea;
+            border-radius: 8px;
+        }
+
+        /* Grid responsivo para informações do paciente */
+        .patient-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        /* Estilo individual de cada campo do paciente */
+        .info-field {
+            padding: 10px;
+        }
+
+        .info-field strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-field p {
+            color: #555;
+            font-size: 1rem;
+        }
+
+        /* Conteúdo principal - estrutura e espaçamento */
+        .content {
+            padding: 30px 20px;
+        }
+
+        /* Seções de medicamentos e avisos */
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #fafbfc;
+            border-radius: 8px;
+            border-left: 5px solid #667eea;
+        }
+
+        /* Estilo dos títulos de seção */
+        .section h2 {
+            color: #667eea;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Ícones indicadores para cada seção */
+        .section.allowed h2::before {
+            content: "✓";
+            color: #28a745;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .section.not-allowed h2::before {
+            content: "✕";
+            color: #dc3545;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .section.warning h2::before {
+            content: "⚠";
+            font-size: 1.8rem;
+        }
+
+        /* Estilo das listas de medicamentos */
+        .medicine-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .medicine-list li {
+            padding: 12px;
+            margin-bottom: 8px;
+            background: white;
+            border-radius: 6px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .medicine-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+        }
+
+        /* Destaque para medicamentos permitidos */
+        .allowed .medicine-list li {
+            border-left-color: #28a745;
+            background: #f0f8f5;
+        }
+
+        /* Destaque para medicamentos proibidos */
+        .not-allowed .medicine-list li {
+            border-left-color: #dc3545;
+            background: #fdf6f6;
+        }
+
+        /* Seção de observações/avisos */
+        .warnings {
+            background: #fff3cd;
+            border-left-color: #ffc107;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .warnings strong {
+            color: #856404;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .warnings p {
+            margin-bottom: 10px;
+            color: #856404;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Seção de downloads e QR Code */
+        .download-section {
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            border-top: 2px solid #ddd;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Estilo do botão de download */
+        .download-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .download-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Seção de visualização do PDF */
+        .pdf-viewer-section {
+            padding: 30px 20px;
+            background: #f8f9fa;
+            border-top: 2px solid #ddd;
+            text-align: center;
+        }
+
+        .pdf-viewer-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        /* Container responsivo para o iframe */
+        .pdf-frame-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        /* Frame do PDF */
+        .pdf-frame-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+
+        /* Container para QR Code */
+        .qr-code-container {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .qr-code-container p {
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .qr-code-container img {
+            border: 3px solid #667eea;
+            border-radius: 8px;
+            padding: 10px;
+            background: white;
+            width: 200px;
+            height: 200px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Rodapé com informações adicionais */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade para dispositivos móveis */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.3rem;
+            }
+
+            .header {
+                padding: 25px 15px;
+            }
+
+            .content {
+                padding: 15px 10px;
+            }
+
+            .section {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+
+            .pdf-frame-container {
+                height: 500px;
+            }
+
+            .download-section {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .patient-info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .download-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .qr-code-container img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .pdf-viewer-section h2 {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Responsividade extra para telas muito pequenas */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 1.1rem;
+                line-height: 1.3;
+            }
+
+            .section h2 {
+                font-size: 1.2rem;
+            }
+
+            .medicine-list li {
+                padding: 10px;
+                font-size: 0.95rem;
+            }
+
+            .qr-code-container img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .pdf-frame-container {
+                height: 400px;
+            }
+
+            .pdf-viewer-section h2 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Container principal que envolve todo o conteúdo -->
+    <div class="container">
+        
+        <!-- Cabeçalho com título e logo visual -->
+        <div class="header">
+            <h1>ORIENTAÇÕES PARA PACIENTES ALÉRGICOS A ANTIINFLAMATÓRIOS, ANALGÉSICOS E ANTI-TÉRMICOS</h1>
+        </div>
+
+        <!-- Informações do paciente -->
+        <div class="patient-info">
+            <div class="patient-info-grid">
+                <div class="info-field">
+                    <strong>Nome do Paciente</strong>
+                    <p>WASHINGTON LUIZ SILVA</p>
+                </div>
+                <div class="info-field">
+                    <strong>Data do Laudo</strong>
+                    <p>23/08/24</p>
+                </div>
+                <div class="info-field">
+                    <strong>Diagnóstico</strong>
+                    <p>PACIENTE PORTADOR DE ANGIOEDEMA/UrticÁRIA INDUZIDO POR AINES</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conteúdo principal das orientações -->
+        <div class="content">
+
+            <!-- Seção de medicamentos permitidos -->
+            <section class="section allowed">
+                <h2>Pode Usar</h2>
+                <ul class="medicine-list">
+                    <li><strong>Febre ou dor:</strong> Corticoides em baixas doses por curtos períodos (p. ex. Prednisona 0,5mg/kg/dia até 7 a 10 dias ou equivalente)</li>
+                    <li><strong>Dor em cólica:</strong> Buscopan simples</li>
+                    <li><strong>Dor moderada:</strong> Dividol (para-hidroxibenzoato de viminol)</li>
+                    <li><strong>Gripes e Resfriados:</strong> Loratadina, Desloratadina, Fexofenadina</li>
+                    <li><strong>Dor de Garganta:</strong> Hexomedine spray</li>
+                    <li><strong>Dores crônicas:</strong> Pregabalina, Amitriptilina, Gabapetina</li>
+                </ul>
+            </section>
+
+            <!-- Seção de medicamentos proibidos -->
+            <section class="section not-allowed">
+                <h2>Não Usar</h2>
+                <p style="margin-bottom: 15px; color: #555;">Os seguintes medicamentos que contenham:</p>
+                
+                <div style="margin-top: 20px;">
+                    <h3 style="color: #dc3545; margin-bottom: 10px; font-size: 1rem;">1. Ácido Acetil Salicílico:</h3>
+                    <ul class="medicine-list">
+                        <li>AAS, todos os tipos de Aspirina, Buferin, Aceticil, Alidor, Anti-termin, Ronal, Doril, Cafiaspirina, Alka-seltzer, Sonrisal, Somalgin, Superist, Fontol, Hebrin, Migrane, Migral, Doloxene-A, Doribel, Coristina, Cibalena, Melhoral, Endosporin, Engove, Ecasil, Cheracap</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <h3 style="color: #dc3545; margin-bottom: 10px; font-size: 1rem;">2. Paracetamol:</h3>
+                    <ul class="medicine-list">
+                        <li>Tylex, Tylenol, Vic Pyrena, Cimegripe, Buscoduo, Buscopan plus</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <h3 style="color: #dc3545; margin-bottom: 10px; font-size: 1rem;">3. Dipirona:</h3>
+                    <ul class="medicine-list">
+                        <li>Novalgina, Magnopyrol, Conmel, Baralgin, Anador, Dorflex, Dexalgen, Cefaldina, Gripomatine, Algicê, Analverin, Apracur, Eucaliptol, Mionevrix, Fluviral, Buscopam composto, Lisador, Migrane, Miocitalgan, Neosaldina, Adegrip, Analginin, Cefaliv, Sedalene, Algexin, Analgex, Dornal, Dorscopena, Neuralgina</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <h3 style="color: #dc3545; margin-bottom: 10px; font-size: 1rem;">4. Fenilbutazona:</h3>
+                    <ul class="medicine-list">
+                        <li>Butazolidina, Butazonil, Butazil, Mioflex</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <h3 style="color: #dc3545; margin-bottom: 10px; font-size: 1rem;">5. Oxifenilbutazona:</h3>
+                    <ul class="medicine-list">
+                        <li>Tandrex, Flamanan, Algi-flamanil, Algi-peralgin, Analtrix, Febupem</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <h3 style="color: #dc3545; margin-bottom: 10px; font-size: 1rem;">6. Indometacina:</h3>
+                    <ul class="medicine-list">
+                        <li>Indocid, Agilisin spray, Indocid colírio</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <h3 style="color: #dc3545; margin-bottom: 10px; font-size: 1rem;">7. Diclofenaco de Sódio ou Potássio:</h3>
+                    <ul class="medicine-list">
+                        <li>Cataflan, Voltaren, Biofenac, Fenaren, Artren, Inflaren, Flogan, Tandrilax, Cataren, Flanaren, Algi-tanderil soft gel, Bel-gel, Clofenak gel, Biofenac Aerosol, Deltaren, Diclo-P, Diclofenax, Doriflam, Fenalflan-D, Flogonac, Gezon, Diclotaren, Dorgen, Ana-Flex, Benervan, Deltaflogin, Fenburil, Fisioren, Inflamax, Ortoflan, Beserol</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <h3 style="color: #dc3545; margin-bottom: 10px; font-size: 1rem;">8. Aceclofenaco:</h3>
+                    <ul class="medicine-list">
+                        <li>Proflam</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <h3 style="color: #dc3545; margin-bottom: 10px; font-size: 1rem;">9. Ibuprofeno:</h3>
+                    <ul class="medicine-list">
+                        <li>Artril, Ibuprofeno, Motrin, Actiprofen, Advil, Algiflex, Benotrin, Danilon, Doretrim, Ibufram, Paratrim, Sanafen, Spidufen, Aflogen, Algi-danilon, Algifen, Fymnal</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <h3 style="color: #dc3545; margin-bottom: 10px; font-size: 1rem;">10. Cetoprofeno:</h3>
+                    <ul class="medicine-list">
+                        <li>Profenid, Artrimid, Algiprofen, Biprofenid, Keduril, Artrosil</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <h3 style="color: #dc3545; margin-bottom: 10px; font-size: 1rem;">11. Fenoprofeno:</h3>
+                    <ul class="medicine-list">
+                        <li>Algipron, Trandrob</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <h3 style="color: #dc3545; margin-bottom: 10px; font-size: 1rem;">12. Naproxeno:</h3>
+                    <ul class="medicine-list">
+                        <li>Naprosyn, Naproxeno, Flanax</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <h3 style="color: #dc3545; margin-bottom: 10px; font-size: 1rem;">13. Piroxicam:</h3>
+                    <ul class="medicine-list">
+                        <li>Feldene, Anartril, Feldox, Inflanam, Piroxifen, Piroxiflam, Brexin, Felnan, Flamadene, Flamostat, Flogoxen, Inflamene, Inflax, Lisedema, Piroxene, Piroxil</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <h3 style="color: #dc3545; margin-bottom: 10px; font-size: 1rem;">14. Meloxicam:</h3>
+                    <ul class="medicine-list">
+                        <li>Movatec, Leutrol, Meloxicam, Flanatec, Inicox, Loxan, Loxiflam, Melotec, Meloxil, Movoxicam</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <h3 style="color: #dc3545; margin-bottom: 10px; font-size: 1rem;">15. Rofecoxib e Celecoxib:</h3>
+                    <ul class="medicine-list">
+                        <li>Vioxx e Celebra</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <h3 style="color: #dc3545; margin-bottom: 10px; font-size: 1rem;">16. Tenoxicam:</h3>
+                    <ul class="medicine-list">
+                        <li>Tilatil, Legil, Tenoxem, Tonotec</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <h3 style="color: #dc3545; margin-bottom: 10px; font-size: 1rem;">17. Nimesulida:</h3>
+                    <ul class="medicine-list">
+                        <li>Antiflogil, Deflogen, Deltaflan, Lidaflan, Neosulina, Nimeflan, Nimesilan, Nisalgen, Nisulid, Sintalgin</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <h3 style="color: #dc3545; margin-bottom: 10px; font-size: 1rem;">18. Ácido Mefenâmico:</h3>
+                    <ul class="medicine-list">
+                        <li>Ponstan</li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <h3 style="color: #dc3545; margin-bottom: 10px; font-size: 1rem;">19. Propoxifeno:</h3>
+                    <ul class="medicine-list">
+                        <li>Doloxene-A</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Seção de avisos e observações importantes -->
+            <section class="section warning warnings">
+                <strong>⚠️ OBSERVAÇÕES IMPORTANTES:</strong>
+                <p><strong>1. Medicações como pomadas e colírios:</strong> As medicações acima também podem causar sintomas se forem usadas como pomadas ou colírios.</p>
+                
+                <p><strong>2. Verificar nome genérico:</strong> Observe sempre o nome Genérico do medicamento!!! Muitos medicamentos contêm estes princípios ativos na composição mesmo que não seja aparente pelo nome comercial.</p>
+            </section>
+
+        </div>
+
+        <!-- Seção de visualização do PDF -->
+        <div class="pdf-viewer-section">
+            <h2>📄 Visualizar Laudo Completo</h2>
+            <!-- Container responsivo que exibe o PDF diretamente na página -->
+            <div class="pdf-frame-container">
+                <iframe src="laudo.pdf" title="Laudo Médico em PDF"></iframe>
+            </div>
+            <p style="color: #666; font-size: 0.9rem; margin-bottom: 20px;">Se o PDF não carregar, verifique se o arquivo "laudo.pdf" está na mesma pasta.</p>
+        </div>
+
+        <!-- Seção de downloads e QR Code para acesso ao PDF -->
+        <div class="download-section">
+            <!-- Botão para download do laudo em PDF -->
+            <a href="laudo.pdf" download class="download-btn">
+                📥 Baixar Laudo em PDF
+            </a>
+
+            <!-- QR Code que aponta para o arquivo PDF -->
+            <div class="qr-code-container">
+                <p>Escanear para acessar PDF:</p>
+                <!-- QR Code gerado via API - aponta para laudo.pdf -->
+                <img id="qrCode" src="" alt="QR Code para download do laudo">
+            </div>
+        </div>
+
+        <!-- Rodapé com informações de versão e data -->
+        <div class="footer">
+            <p>Laudo Médico - Angioedema e Reações a AINEs | Gerado em: 13 de fevereiro de 2026</p>
+            <p style="margin-top: 10px; font-size: 0.85rem;">Este documento é uma orientação médica oficial. Para dúvidas, consulte seu médico responsável.</p>
+        </div>
+
+    </div>
+
+    <script>
+        // Gera QR code com URL completa do site
+        window.addEventListener('DOMContentLoaded', function() {
+            const pdfUrl = new URL('laudo.pdf', window.location.href).href;
+            const qrCode = document.getElementById('qrCode');
+            const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(pdfUrl)}`;
+            qrCode.src = qrApiUrl;
+        });
+    </script>
+</body>
+</html>
