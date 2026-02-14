@@ -1,0 +1,451 @@
+:root {
+    --primary: #667eea;
+    --danger: #dc3545;
+    --success: #28a745;
+    --warning: #ffc107;
+    --muted: #666666;
+    --bg: #f8fafc;
+}
+
+/* Reset e estilos globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Configuração da familia de fontes e cores base */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Títulos com Poppins para mais personalidade */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap');
+.header h1 { font-family: 'Poppins', 'Inter', sans-serif; font-weight:700; }
+
+/* FAB (Floating Action Buttons) */
+.fab-group { position: fixed; right: 22px; bottom: 26px; display: flex; flex-direction: column; gap: 12px; z-index: 1200; }
+.fab { width: 56px; height: 56px; border-radius: 14px; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; color: white; background: linear-gradient(135deg,#6b4ad9 0%, #4f6ef7 100%); box-shadow: 0 10px 30px rgba(43,50,90,0.18); border: none; cursor: pointer; font-size: 20px; }
+.fab:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(43,50,90,0.22); }
+.fab:active { transform: translateY(0); }
+
+/* Section headers refinement */
+.section h2 { position: relative; padding-left: 10px; }
+.section h2::after { content: ''; position: absolute; left: 0; top: 6px; width: 6px; height: calc(100% - 12px); background: var(--primary); border-radius: 4px; }
+
+/* Subtle page background accent */
+body::before { content: ''; position: fixed; left: -10%; top: -20%; width: 450px; height: 450px; background: radial-gradient(circle at 30% 30%, rgba(102,126,234,0.12), transparent 35%); z-index: 0; pointer-events: none; }
+body::after { content: ''; position: fixed; right: -8%; bottom: -18%; width: 520px; height: 520px; background: radial-gradient(circle at 70% 70%, rgba(118,75,162,0.10), transparent 30%); z-index: 0; pointer-events: none; }
+
+/* Ensure main container sits above accents */
+.container { position: relative; z-index: 10; }
+
+/* Container principal - centralizado e com largura máxima */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Cabeçalho com cores suaves */
+.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom: 4px solid #764ba2;
+}
+
+/* Estilo do título principal */
+.header h1 {
+    font-size: clamp(1.2rem, 5vw, 2rem);
+    margin-bottom: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Seção de dados do paciente */
+.patient-info {
+    background: linear-gradient(180deg,#ffffff 0%, #fbfdff 100%);
+    padding: 18px;
+    margin: 20px;
+    border-radius: 12px;
+    border-left: 6px solid rgba(102,126,234,0.12);
+    box-shadow: 0 8px 30px rgba(16,24,40,0.04);
+}
+
+/* Grid responsivo para informações do paciente */
+.patient-info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+}
+
+/* Estilo individual de cada campo do paciente */
+.info-field {
+    padding: 12px 14px;
+    background: rgba(102,126,234,0.02);
+    border-radius: 8px;
+}
+
+.info-field strong {
+    color: #667eea;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.info-field p {
+    color: #555;
+    font-size: 1rem;
+}
+
+/* Destaque do nome do paciente */
+.patient-name { display: inline-block; font-size: 1.12rem; color: #0b2545; font-weight: 800; background: linear-gradient(90deg, rgba(102,126,234,0.08), rgba(118,75,162,0.06)); padding: 6px 10px; border-radius: 8px; }
+
+/* Patient header */
+.patient-header { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:10px; }
+.patient-header h3 { font-size: 1.05rem; margin:0; color:#10203a; }
+.patient-actions { display:flex; gap:8px; }
+
+/* Emergency contact */
+.emergency-contact { margin-top:14px; background: linear-gradient(90deg, rgba(255,245,242,0.9), rgba(255,249,240,0.9)); padding:12px 14px; border-radius:8px; border-left: 4px solid #ffb4a2; }
+.emergency-contact strong { display:block; color:#b33; }
+.emergency-contact p { margin:6px 0 0 0; font-weight:600; color:#222; }
+
+/* Responsive: two-column grid on wider screens */
+@media (min-width: 760px) {
+    .patient-info-grid { grid-template-columns: repeat(2, 1fr); }
+    .patient-header { flex-direction: row; }
+}
+
+@media (max-width: 520px) {
+    .patient-header { flex-direction: column; align-items:center; }
+    .info-field { padding:10px; }
+}
+
+/* Conteúdo principal - estrutura e espaçamento */
+.content {
+    padding: 30px 20px;
+}
+
+/* Seções de medicamentos e avisos */
+.section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #fafbfc;
+    border-radius: 8px;
+    border-left: 5px solid #667eea;
+}
+
+/* Estilo dos títulos de seção */
+.section h2 {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Cabeçalhos de subitens (subseções de medicamento) */
+.med-heading {
+    color: var(--danger);
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.muted {
+    color: var(--muted);
+    margin-bottom: 15px;
+}
+
+/* Leve animação de entrada */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.section { animation: fadeUp 360ms ease both; }
+
+/* Ícones indicadores para cada seção */
+.section.allowed h2::before { content: "✓"; color: #28a745; font-size: 1.8rem; font-weight: bold; }
+.section.not-allowed h2::before { content: "✕"; color: #dc3545; font-size: 1.8rem; font-weight: bold; }
+.section.warning h2::before { content: "⚠"; font-size: 1.8rem; }
+
+/* Estilo das listas de medicamentos */
+.medicine-list { list-style: none; padding: 0; }
+.medicine-list li {
+    padding: 12px;
+    margin-bottom: 8px;
+    background: white;
+    border-radius: 6px;
+    border-left: 4px solid #667eea;
+    transition: all 0.3s ease;
+}
+
+.medicine-list li:hover { transform: translateX(5px); box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1); }
+
+/* Destaque para medicamentos permitidos */
+.allowed .medicine-list li { border-left-color: #28a745; background: #f0f8f5; }
+
+/* Destaque para medicamentos proibidos */
+.not-allowed .medicine-list li { border-left-color: #dc3545; background: #fdf6f6; }
+
+/* Seção de observações/avisos */
+.warnings { background: #fff3cd; border-left-color: #ffc107; padding: 20px; border-radius: 8px; margin-top: 20px; }
+.warnings strong { color: #856404; display: block; margin-bottom: 10px; }
+.warnings p { margin-bottom: 10px; color: #856404; font-size: 0.95rem; line-height: 1.7; }
+
+/* Seção de downloads e QR Code */
+.download-section { padding: 30px 20px; background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%); border-top: 2px solid #ddd; display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; align-items: center; }
+
+/* Estilo do botão de download (CTA principal) */
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .75rem;
+    padding: 1.4rem 1.8rem;
+    background: linear-gradient(90deg, #ff6b6b, #ff3b30);
+    color: white;
+    border-radius: .8rem;
+    font-weight: 800;
+    font-size: 1.25rem;
+    min-width: 340px;
+    height: 64px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.24);
+    border: none;
+    cursor: pointer;
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+.download-btn:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 28px 64px rgba(0,0,0,0.28); }
+.download-btn:active { transform: translateY(-2px) scale(0.997); }
+
+/* Centered large download area */
+.download-card { align-items: center; }
+.download-main { display:flex; align-items:center; justify-content:center; gap:18px; }
+
+/* Attention pulse animation on load */
+.download-btn.attention { animation: pulseAttention 1600ms ease-in-out; }
+@keyframes pulseAttention { 0% { box-shadow: 0 12px 40px rgba(79,110,247,0.18); transform: translateY(0) scale(1); } 50% { box-shadow: 0 26px 68px rgba(79,110,247,0.26); transform: translateY(-6px) scale(1.03); } 100% { box-shadow: 0 12px 40px rgba(79,110,247,0.18); transform: translateY(0) scale(1); } }
+
+/* Subtle continuous pulse for CTA */
+.download-btn.pulse { animation: pulseCTA 2600ms ease-in-out infinite; }
+@keyframes pulseCTA {
+    0% { transform: translateY(0) scale(1); box-shadow: 0 10px 22px rgba(0,0,0,0.18); }
+    45% { transform: translateY(-6px) scale(1.02); box-shadow: 0 22px 46px rgba(0,0,0,0.22); }
+    100% { transform: translateY(0) scale(1); box-shadow: 0 10px 22px rgba(0,0,0,0.18); }
+}
+
+/* Seção de visualização do PDF */
+.pdf-viewer-section { padding: 30px 20px; background: #f8f9fa; border-top: 2px solid #ddd; text-align: center; }
+.pdf-viewer-section h2 { color: #667eea; margin-bottom: 20px; font-size: 1.3rem; }
+
+/* Container responsivo para o iframe */
+.pdf-frame-container { position: relative; width: 100%; height: 600px; background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); overflow: hidden; margin-bottom: 20px; }
+.pdf-frame-container iframe { width: 100%; height: 100%; border: none; border-radius: 8px; }
+
+/* Container para QR Code */
+.qr-code-container { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.qr-code-container p { color: #666; font-size: 0.9rem; font-weight: 500; }
+.qr-code-container img { border: 3px solid #667eea; border-radius: 8px; padding: 10px; background: white; width: 200px; height: 200px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
+
+/* New: download card layout */
+.download-card { display: flex; gap: 22px; align-items: center; justify-content: space-between; width: 100%; max-width: 980px; padding: 18px; background: linear-gradient(180deg,#ffffff 0%, #fbfdff 100%); border-radius: 12px; box-shadow: 0 8px 30px rgba(16,24,40,0.05); border: 1px solid rgba(102,126,234,0.06); }
+.download-main { flex: 1 1 420px; display: flex; flex-direction: column; gap: 12px; }
+.download-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.small-note { margin: 6px 0 0 0; color: #475569; font-size: 0.95rem; }
+.qr-card { width: 220px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.qr-hint { color: #64748b; font-size: 0.85rem; text-align: center; margin-top: 6px; }
+
+/* Not-allowed enhancements: search + pills layout */
+.not-allowed-controls { margin-top: 10px; margin-bottom: 8px; }
+.search-input { width: 100%; max-width: 420px; padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(16,24,40,0.06); background: #fff; box-shadow: 0 6px 18px rgba(16,24,40,0.04); font-size: 0.95rem; color: #10203a; }
+.not-allowed .medicine-list { display: flex; flex-wrap: wrap; gap: 8px; padding: 8px 0 0 0; margin: 0; }
+.not-allowed .medicine-list li { display: inline-flex; align-items: center; padding: 8px 12px; margin: 0; background: #fff6f6; border-radius: 999px; border: 1px solid rgba(220,53,69,0.10); color: #7a1f1f; font-weight: 700; box-shadow: 0 6px 18px rgba(220,53,69,0.03); list-style: none; }
+.not-allowed .medicine-list li:hover { transform: translateY(-4px); box-shadow: 0 12px 26px rgba(220,53,69,0.06); }
+.not-allowed .med-heading { color: #b32222; font-size: 1rem; margin-bottom: 10px; display: block; }
+
+@media (max-width: 760px) {
+    .not-allowed .medicine-list { gap: 6px; }
+    .not-allowed .medicine-list li { padding: 7px 10px; font-size: 0.95rem; }
+}
+
+/* PDF link input removed */
+
+/* Compact controls row */
+.controls.compact { display:flex; gap:10px; justify-content:center; margin-top:10px; }
+
+/* Accessibility: visually hidden label */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+/* Botões de toggle e controles */
+.toggle-btn { background: transparent; border: 1px solid rgba(0,0,0,0.06); padding: 6px 10px; border-radius: 6px; font-size: 0.85rem; cursor: pointer; color: var(--primary); display: inline-flex; align-items: center; gap: 8px; }
+.controls { display: flex; gap: 10px; align-items: center; }
+.medicine-list.collapsed { max-height: 0; overflow: hidden; transition: max-height 260ms ease; padding: 0 12px; margin-bottom: 0; }
+
+/* Ajustes para impressão */
+@media print { body { background: white; padding: 0; } .download-section, .pdf-viewer-section, .download-btn, .qr-code-container { display: none !important; } .container { box-shadow: none; max-width: 100%; border-radius: 0; } }
+
+/* Rodapé com informações adicionais */
+.footer { background: #2c3e50; color: white; text-align: center; padding: 20px; font-size: 0.9rem; }
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+    .header h1 { font-size: 1.3rem; }
+    .header { padding: 25px 15px; }
+    .content { padding: 15px 10px; }
+    .section { padding: 15px; margin-bottom: 20px; }
+    .pdf-frame-container { height: 500px; }
+    .download-section { flex-direction: column; gap: 20px; padding: 20px; }
+    .patient-info-grid { grid-template-columns: 1fr; }
+    .download-btn { width: 100%; justify-content: center; padding: 1.1rem 1.4rem; font-size: 1.1rem; min-width: auto; height: auto; }
+    .qr-code-container img { width: 150px; height: 150px; }
+    .pdf-viewer-section h2 { font-size: 1.1rem; }
+
+    .download_card { flex-direction: column; align-items: stretch; gap: 12px; }
+    .qr-card { width: 100%; flex-direction: row; justify-content: center; gap: 12px; }
+}
+
+/* Responsividade extra para telas muito pequenas */
+@media (max-width: 480px) {
+    body { padding: 10px; }
+    .header h1 { font-size: 1.1rem; line-height: 1.3; }
+    .section h2 { font-size: 1.2rem; }
+    .medicine-list li { padding: 10px; font-size: 0.95rem; }
+    .qr-code-container img { width: 120px; height: 120px; }
+    .pdf-frame-container { height: 400px; }
+    .pdf-viewer-section h2 { font-size: 1rem; }
+}
+
+/* Dark theme removed per user request */
+
+/* Additional animations and UI polish */
+:root { --card-radius: 10px; --glass: rgba(255,255,255,0.06); --soft-shadow: 0 8px 30px rgba(16,24,40,0.06); }
+
+/* Animated header gradient */
+.header { background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #5ad0ff 100%); background-size: 300% 300%; animation: gradientShift 8s ease infinite; }
+@keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+.header h1 { transform-origin: center; animation: floatTitle 6s ease-in-out infinite; }
+@keyframes floatTitle { 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-6px);} }
+
+/* Reveal on scroll */
+.reveal { opacity: 0; transform: translateY(12px); transition: opacity 420ms ease, transform 420ms ease; will-change: transform, opacity; }
+.reveal.in-view { opacity: 1; transform: none; }
+
+/* Staggered list item reveal */
+.medicine-list li { opacity: 0; transform: translateX(-6px); transition: opacity 360ms ease, transform 360ms ease; }
+.medicine-list li.in-view { opacity: 1; transform: none; }
+
+/* Button polish + ripple container */
+.toggle-btn, .download-btn { position: relative; overflow: hidden; }
+.toggle-btn::after, .download-btn::after { content: ''; position: absolute; border-radius: 50%; transform: scale(0); opacity: 0.4; pointer-events: none; }
+
+.ripple { position: absolute; border-radius: 50%; transform: scale(0); animation: rippleAnim 600ms ease-out; background: rgba(255,255,255,0.65); pointer-events: none; }
+@keyframes rippleAnim { to { transform: scale(4); opacity: 0; } }
+
+/* Print button feedback */
+.toggle-btn.printing { animation: printPulse 700ms ease; box-shadow: 0 12px 30px rgba(43,50,90,0.18); transform-origin: center; }
+@keyframes printPulse { 0% { transform: translateY(0) scale(1); } 50% { transform: translateY(-6px) scale(1.02); } 100% { transform: translateY(0) scale(1); } }
+
+/* Small status hint added via pseudo-element when printing */
+.toggle-btn.printing::after { content: 'Imprimindo...'; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); background: rgba(11,37,69,0.9); color: white; padding: 6px 10px; border-radius: 999px; font-size: 0.85rem; opacity: 0.98; }
+
+/* Card hover lift */
+.medicine-list li:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 12px 30px rgba(16,24,40,0.06); }
+
+/* Slight glass effect for sections */
+.section { backdrop-filter: blur(6px); }
+
+/* QR pulse effect */
+.qr-code-container img { transition: transform 420ms ease, box-shadow 420ms ease; }
+.qr-code-container img:hover { transform: scale(1.04); box-shadow: 0 12px 30px rgba(102,126,234,0.18); }
+
+/* --- Refinamentos visuais adicionais --- */
+/* Layout mais amplo e espaçamento confortável */
+.container { max-width: 1100px; padding-bottom: 28px; }
+body { background: linear-gradient(180deg, #f4f7fb 0%, #eef3fb 60%); }
+
+/* Header mais elegante: leve sombra, radius e alinhamento central */
+.header { padding: 22px 20px; border-bottom-width: 2px; border-bottom-color: rgba(118,75,162,0.12); box-shadow: 0 6px 18px rgba(38,52,84,0.05); }
+.header h1 { font-size: clamp(1.05rem, 3.4vw, 1.6rem); line-height: 1.12; text-transform: uppercase; letter-spacing: 0.6px; }
+.header p.subtitle { margin-top: 8px; color: rgba(255,255,255,0.9); font-weight: 500; opacity: 0.95; font-size: 0.95rem; }
+
+/* Header inner layout */
+.header-inner { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px; max-width: 1000px; margin: 0 auto; text-align: center; }
+.header-top { max-width: 920px; }
+.subtitle { margin-top: 6px; color: rgba(255,255,255,0.92); font-size: 0.95rem; }
+.header-meta { margin-top: 8px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.doctor-badge { background: rgba(255,255,255,0.12); color: #fff; padding: 8px 14px; border-radius: 999px; font-weight:700; box-shadow: 0 6px 18px rgba(11,37,69,0.06); }
+.meta-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: center; color: rgba(255,255,255,0.95); }
+.meta-item { font-size: 0.95rem; color: rgba(255,255,255,0.95); }
+.meta-sep { opacity: 0.6; margin: 0 4px; }
+.clinic-name { font-weight:700; }
+.clinic-contact { font-size:0.9rem; opacity:0.95; }
+.clinic-meta { font-size: 0.85rem; opacity: 0.95; margin-top: 4px; }
+
+/* Signature block */
+.signature-block { max-width: 700px; margin: 18px auto; text-align: left; padding: 18px; background: linear-gradient(180deg,#ffffff 0%, rgba(255,255,255,0.6) 100%); border-radius: 10px; box-shadow: 0 10px 30px rgba(16,24,40,0.06); }
+.signature-line { margin-top: 6px; color: #111; opacity: 0.8; }
+.signature-name { margin-top: 8px; font-weight: 800; color: #10203a; }
+.signature-info { margin-top: 4px; color: #334155; font-size: 0.95rem; }
+
+/* Controls: tornar mais visíveis, com backdrop e sombra */
+.controls { gap: 12px; }
+.controls .toggle-btn { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); color: #fff; padding: 8px 12px; }
+.controls .toggle-btn:hover { background: rgba(255,255,255,0.12); }
+.download-btn { background: linear-gradient(90deg,#4f6ef7 0%, #6b4ad9 100%); padding: 14px 26px; border-radius: 10px; font-size: 1rem; }
+
+/* Elevar as seções como cartões com maior contraste */
+.section { box-shadow: 0 10px 30px rgba(16,24,40,0.04); border-radius: 12px; }
+.patient-info { margin: 22px; box-shadow: 0 8px 26px rgba(16,24,40,0.03); border-radius: 12px; padding: 18px; }
+
+/* Medicamento: deixar título e descrição mais legíveis */
+.medicine-list li { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; }
+.medicine-list li strong { min-width: 140px; color: #1f2a44; font-weight: 700; }
+
+/* Badges visuais para categorias */
+.section.allowed h2::after, .section.not-allowed h2::after, .section.warning h2::after { content: ''; margin-left: auto; width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.section.allowed h2::after { background: #28a745; }
+.section.not-allowed h2::after { background: #dc3545; }
+.section.warning h2::after { background: #ffc107; }
+
+/* PDF frame: borda sutil e radius maior */
+.pdf-frame-container { border-radius: 14px; border: 1px solid rgba(0,0,0,0.04); overflow: hidden; }
+
+/* QR container central com label discreta */
+.qr-code-container p { font-weight: 600; color: #334155; }
+
+/* Ajustes dos botões para acessibilidade e contraste */
+.toggle-btn, .download-btn { font-weight: 700; letter-spacing: 0.2px; }
+
+/* Imprimir: versão limpa e com contraste para papel */
+@media print {
+    body { background: white; color: #111; }
+    .header { background: white; color: #111; box-shadow: none; }
+    .section, .patient-info { background: #fff; box-shadow: none; border-left: 6px solid #111; }
+    .controls, .download-section, .qr-code-container { display: none !important; }
+}
+
+/* Mobile: compactar espaçamentos e adaptar botões */
+@media (max-width: 768px) {
+    .container { padding: 12px; }
+    .header { padding: 22px 14px; }
+    .controls { position: static; display: flex; flex-wrap: wrap; }
+    .download-btn { width: 100%; }
+    .medicine-list li { flex-direction: column; }
+}

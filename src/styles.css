@@ -1,0 +1,47 @@
+:root{--primary:#667eea;--danger:#dc3545;--success:#28a745;--warning:#ffc107;--muted:#666666;--bg:#f8fafc}
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+body{font-family:Inter,Segoe UI,system-ui,Arial,sans-serif;background:linear-gradient(135deg,#f5f7fa 0%,#c3cfe2 100%);color:#333;line-height:1.6;padding:20px;min-height:100vh}
+.container{max-width:1000px;margin:0 auto;background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.95));border-radius:14px;box-shadow:0 10px 40px rgba(22,28,45,0.08);overflow:hidden}
+.header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:40px 20px;text-align:center;border-bottom:4px solid #764ba2;background-position:50% 50%;background-size:cover;transition:background-position 0.15s linear}
+.header h1{font-size:clamp(1.2rem,5vw,2rem);margin-bottom:15px;font-weight:700}
+.patient-info{background:#f8f9fa;padding:20px;margin:20px;border-left:5px solid var(--primary);border-radius:8px}
+.patient-info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px}
+.info-field{padding:10px}
+.info-field strong{color:var(--primary);display:block;margin-bottom:5px;font-size:.9rem;text-transform:uppercase}
+.content{padding:26px 22px}
+.section{margin-bottom:30px;padding:20px;background:#fafbfc;border-radius:8px;border-left:5px solid var(--primary)}
+.section.reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
+.section.in-view{opacity:1;transform:none}
+.section h2{color:var(--primary);font-size:1.5rem;margin-bottom:15px;display:flex;align-items:center;gap:10px}
+.med-heading{color:var(--danger);margin-bottom:10px;font-size:1rem}
+.muted{color:var(--muted);margin-bottom:15px}
+.medicine-list{list-style:none;padding:0}
+.medicine-list li{padding:12px;margin-bottom:8px;background:#fff;border-radius:6px;border-left:4px solid var(--primary);transition:all .3s}
+.medicine-list li:hover{transform:translateX(5px);box-shadow:0 4px 12px rgba(102,126,234,.1)}
+.reveal-item{opacity:0;transform:translateY(8px);transition:opacity .45s ease,transform .45s ease}
+.reveal-item.in-view{opacity:1;transform:none}
+.allowed .medicine-list li{border-left-color:var(--success);background:#f0f8f5}
+.not-allowed .medicine-list li{border-left-color:var(--danger);background:#fdf6f6}
+.warnings{background:#fff3cd;border-left-color:var(--warning);padding:20px;border-radius:8px;margin-top:20px}
+.download-section{padding:30px 20px;background:linear-gradient(135deg,#f5f7fa 0%,#e9ecef 100%);border-top:2px solid #ddd;display:flex;flex-wrap:wrap;gap:30px;justify-content:center;align-items:center}
+.download-btn{background:linear-gradient(90deg,#4753d4,#7c53d6);color:#fff;padding:12px 20px;border-radius:10px;font-weight:700;display:inline-flex;align-items:center;gap:10px;border:none;cursor:pointer}
+.toggle-btn{background:transparent;border:1px solid rgba(0,0,0,.06);padding:6px 10px;border-radius:6px;font-size:.85rem;cursor:pointer;color:var(--primary);display:inline-flex;align-items:center;gap:8px;position:relative;overflow:hidden}
+
+/* ripple effect support (delegation via JS) */
+.ripple{position:relative;overflow:hidden}
+.ripple::after{content:'';position:absolute;border-radius:50%;transform:scale(0);background:rgba(255,255,255,0.35);width:100px;height:100px;opacity:0;pointer-events:none;transition:transform .5s,opacity .8s}
+.ripple.active::after{transform:scale(3);opacity:1;transition:transform .45s,opacity .8s}
+.controls{display:flex;gap:10px;align-items:center}
+.qr-code-container{display:flex;flex-direction:column;align-items:center;gap:10px}
+.qr-code-container img{border-radius:10px;padding:12px;background:#fff;width:180px;height:180px;border:1px solid rgba(16,24,40,0.04);box-shadow:0 8px 24px rgba(16,24,40,0.06)}
+.qr-code-container .pulse{animation:qrPulse 2s infinite ease-in-out}
+@keyframes qrPulse{0%{box-shadow:0 8px 24px rgba(79,70,229,0.06)}50%{box-shadow:0 16px 40px rgba(79,70,229,0.12)}100%{box-shadow:0 8px 24px rgba(79,70,229,0.06)}}
+.pdf-viewer-section{padding:30px 20px;background:#f8f9fa;border-top:2px solid #ddd;text-align:center}
+.pdf-frame-container{position:relative;width:100%;height:600px;background:#fff;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.1);overflow:hidden;margin-bottom:20px}
+.pdf-frame-container iframe{width:100%;height:100%;border:none;border-radius:8px}
+.footer{background:#2c3e50;color:#fff;text-align:center;padding:20px;font-size:.9rem}
+@media print{body{background:#fff;padding:0}.download-section,.pdf-viewer-section,.download-btn,.qr-code-container{display:none!important}.container{box-shadow:none;max-width:100%;border-radius:0}}
+@media (max-width:768px){.header{padding:25px 15px}.content{padding:15px 10px}.section{padding:15px;margin-bottom:20px}.pdf-frame-container{height:500px}.download-section{flex-direction:column;gap:20px;padding:20px}.patient-info-grid{grid-template-columns:1fr}.download-btn{width:100%;justify-content:center}.qr-code-container img{width:150px;height:150px}.pdf-viewer-section h2{font-size:1.1rem}}
+@media (max-width:768px){.header{padding:22px 14px}.content{padding:12px 12px}.section{padding:14px;margin-bottom:18px}.pdf-frame-container{height:420px}.download-section{flex-direction:column;gap:18px;padding:18px}.patient-info-grid{grid-template-columns:1fr}.download-btn{width:100%;justify-content:center}.qr-code-container img{width:150px;height:150px}.pdf-viewer-section h2{font-size:1.05rem}.top-actions{flex-direction:column;align-items:stretch;gap:10px}}
+@media (max-width:480px){body{padding:10px}.header h1{font-size:1.1rem;line-height:1.3}.section h2{font-size:1.2rem}.medicine-list li{padding:10px;font-size:.95rem}.qr-code-container img{width:120px;height:120px}.pdf-frame-container{height:400px}.pdf-viewer-section h2{font-size:1rem}}

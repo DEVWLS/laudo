@@ -1,0 +1,92 @@
+{
+  "allowed": [
+    "Corticoides em baixas doses (p.ex. Prednisona 0,5mg/kg/dia por 7-10 dias)",
+    "Buscopan simples",
+    "Dividol (para-hidroxibenzoato de viminol)",
+    "Loratadina",
+    "Desloratadina",
+    "Fexofenadina",
+    "Hexomedine spray",
+    "Pregabalina",
+    "Amitriptilina",
+    "Gabapentina"
+  ],
+  "prohibitedSections": [
+    {
+      "title": "1. Ácido Acetil Salicílico",
+      "items": ["AAS, todos os tipos de Aspirina, Buferin, Aceticil, Alidor, Anti-termin, Ronal, Doril, Cafiaspirina, Alka-seltzer, Sonrisal, Somalgin, Superist, Fontol, Hebrin, Migrane, Migral, Doloxene-A, Doribel, Coristina, Cibalena, Melhoral, Endosporin, Engove, Ecasil, Cheracap"]
+    },
+    {
+      "title": "2. Paracetamol",
+      "items": ["Tylex, Tylenol, Vic Pyrena, Cimegripe, Buscoduo, Buscopan plus"]
+    },
+    {
+      "title": "3. Dipirona",
+      "items": ["Novalgina, Magnopyrol, Conmel, Baralgin, Anador, Dorflex, Dexalgen, Cefaldina, Gripomatine, Algicê, Analverin, Apracur, Eucaliptol, Mionevrix, Fluviral, Buscopam composto, Lisador, Migrane, Miocitalgan, Neosaldina, Adegrip, Analginin, Cefaliv, Sedalene, Algexin, Analgex, Dornal, Dorscopena, Neuralgina"]
+    },
+    {
+      "title": "4. Fenilbutazona",
+      "items": ["Butazolidina, Butazonil, Butazil, Mioflex"]
+    },
+    {
+      "title": "5. Oxifenilbutazona",
+      "items": ["Tandrex, Flamanan, Algi-flamanil, Algi-peralgin, Analtrix, Febupem"]
+    },
+    {
+      "title": "6. Indometacina",
+      "items": ["Indocid, Agilisin spray, Indocid colírio"]
+    },
+    {
+      "title": "7. Diclofenaco de Sódio ou Potássio",
+      "items": ["Cataflan, Voltaren, Biofenac, Fenaren, Artren, Inflaren, Flogan, Tandrilax, Cataren, Flanaren, Algi-tanderil soft gel, Bel-gel, Clofenak gel, Biofenac Aerosol, Deltaren, Diclo-P, Diclofenax, Doriflam, Fenalflan-D, Flogonac, Gezon, Diclotaren, Dorgen, Ana-Flex, Benervan, Deltaflogin, Fenburil, Fisioren, Inflamax, Ortoflan, Beserol"]
+    },
+    {
+      "title": "8. Aceclofenaco",
+      "items": ["Proflam"]
+    },
+    {
+      "title": "9. Ibuprofeno",
+      "items": ["Artril, Ibuprofeno, Motrin, Actiprofen, Advil, Algiflex, Benotrin, Danilon, Doretrim, Ibufram, Paratrim, Sanafen, Spidufen, Aflogen, Algi-danilon, Algifen, Fymnal"]
+    },
+    {
+      "title": "10. Cetoprofeno",
+      "items": ["Profenid, Artrimid, Algiprofen, Biprofenid, Keduril, Artrosil"]
+    },
+    {
+      "title": "11. Fenoprofeno",
+      "items": ["Algipron, Trandrob"]
+    },
+    {
+      "title": "12. Naproxeno",
+      "items": ["Naprosyn, Naproxeno, Flanax"]
+    },
+    {
+      "title": "13. Piroxicam",
+      "items": ["Feldene, Anartril, Feldox, Inflanam, Piroxifen, Piroxiflam, Brexin, Felnan, Flamadene, Flamostat, Flogoxen, Inflamene, Inflax, Lisedema, Piroxene, Piroxil"]
+    },
+    {
+      "title": "14. Meloxicam",
+      "items": ["Movatec, Leutrol, Meloxicam, Flanatec, Inicox, Loxan, Loxiflam, Melotec, Meloxil, Movoxicam"]
+    },
+    {
+      "title": "15. Rofecoxib e Celecoxib",
+      "items": ["Vioxx, Celebra"]
+    },
+    {
+      "title": "16. Tenoxicam",
+      "items": ["Tilatil, Legil, Tenoxem, Tonotec"]
+    },
+    {
+      "title": "17. Nimesulida",
+      "items": ["Antiflogil, Deflogen, Deltaflan, Lidaflan, Neosulina, Nimeflan, Nimesilan, Nisalgen, Nisulid, Sintalgin"]
+    },
+    {
+      "title": "18. Ácido Mefenâmico",
+      "items": ["Ponstan"]
+    },
+    {
+      "title": "19. Propoxifeno",
+      "items": ["Doloxene-A"]
+    }
+  ]
+}
